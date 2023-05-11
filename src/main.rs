@@ -168,9 +168,9 @@ fn main() {
     let mut header = StringRecord::new();
 
     // Get the headers
-    for field in reader.headers() {
+    reader.headers().into_iter().for_each(|field| {
         header = field.to_owned();
-    }
+    });
 
     let dir = "translations";
     create_dir_all(dir).expect("write failed");
